@@ -94,8 +94,45 @@ const myArrayWithNamesStartingWithlorL = (arr) => {
 console.log(myArrayWithNamesStartingWithlorL(myNewArray))
 
 
-
 // EXERCISE 5
+// Function Declaration
+function add(n1, n2) {
+    return n1 + n2;
+  }
+  
+  // Function Expression
+  var sub = function (n1, n2) {
+    return n1 - n2;
+  };
+  
+  // Function Expression with a callback
+  var cb = function (n1, n2, callback) {
+    return `Result from the two numbers: ${n1} and ${n2} = ${callback(n1, n2)}`;
+  };
+  
+  // 1- What will this print? A: 3
+  console.log(add(1, 2));
+  
+  // 2- What will it print and what does add represent? A: undefined
+  console.log(add("dog"))
+  
+  // 3- What will it print? A: 3 but why?????
+    console.log(add(1,2,3));
+  
+  // 4- What will it print? A: NaN
+   console.log(add(1));
+  
+  // 5- What will it print? A: Result from the two numbers: 3 and 3 = 6
+   console.log(cb(3,3,add));
+  
+  // 6- What will it print? A: Result from the two numbers: 4 and 3 = 1
+   console.log(cb(4,3,sub));
+  
+  // 7- What will it print and what was the problem? A: callback is not a function - it is but you don't need to give paranthesis as a callback
+   //console.log(cb(3,3,add()));
+  
+  // 8- What will it print? A: Result from the two numbers: 3 and hh = 3hh
+   console.log(cb(3,"hh",add));
 
 
 // EXERCISE 6
