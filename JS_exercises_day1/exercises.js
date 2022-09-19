@@ -25,8 +25,23 @@ const roundMyNumberDown = (num) => Math.floor(num)
 console.log(roundMyNumberDown(10.334))
 
 // EXERCISE 3
+let cph = "Copenhagen"
+let bis = "Business"
+let aca = "Academy"
 
+let cba = `${cph} ${bis} ${aca}`
+console.log(cba)
 
+console.log(cba.toUpperCase())
+console.log(cba.toLowerCase())
+
+cph = "Lyngby"
+cba = `${cph} ${bis} ${aca}`
+console.log(cba)
+
+console.log("Copenhagen".slice(1,5))
+
+console.log(cba.split(" "))
 
 // EXERCISE 4
 
