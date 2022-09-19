@@ -12,10 +12,20 @@
 
 
 // EXERCISE 2
+const myRandomNum = Math.ceil(Math.random()*10)
+console.log(myRandomNum)
 
+const addition = (a, b) => a + b
+console.log(addition(20,12))
 
+const roundMyNumberUp = (num) => Math.ceil(num)
+console.log(roundMyNumberUp(10.334))
+
+const roundMyNumberDown = (num) => Math.floor(num)
+console.log(roundMyNumberDown(10.334))
 
 // EXERCISE 3
+
 
 
 // EXERCISE 4
