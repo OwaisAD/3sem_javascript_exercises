@@ -73,6 +73,7 @@ console.log(all)
 all.sort()
 console.log(all)
 
+//Uppercasing all firstLetters in a list and sorting the list
 const mySortingAlgorithm = (namesList) => {
     newArray = namesList.map((name) => name.charAt(0).toUpperCase() + name.slice(1)).sort()
 
