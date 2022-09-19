@@ -12,11 +12,11 @@
 
 
 // EXERCISE 2
-const myRandomNum = Math.ceil(Math.random()*10)
+const myRandomNum = Math.ceil(Math.random() * 10)
 console.log(myRandomNum)
 
 const addition = (a, b) => a + b
-console.log(addition(20,12))
+console.log(addition(20, 12))
 
 const roundMyNumberUp = (num) => Math.ceil(num)
 console.log(roundMyNumberUp(10.334))
@@ -35,15 +35,63 @@ console.log(cba)
 console.log(cba.toUpperCase())
 console.log(cba.toLowerCase())
 
-cph = "Lyngby"
-cba = `${cph} ${bis} ${aca}`
+cba = cba.replace("Copenhagen", "Lyngby")
 console.log(cba)
 
-console.log("Copenhagen".slice(1,5))
+console.log("Copenhagen".substring(1, 5))
 
 console.log(cba.split(" "))
 
 // EXERCISE 4
+var boys = ["Peter", "lars", "Ole"]
+var girls = ["Janne", "hanne", "Sanne"]
+
+const all = boys.concat(girls)
+console.log(all)
+
+const allInAString = all.join(", ")
+console.log(allInAString)
+
+const allInAString2 = all.join("-")
+console.log(allInAString2)
+
+all.push("Lone", "Gitte")
+console.log(all)
+
+all.unshift("Hans", "Kurt")
+console.log(all)
+
+all.shift()
+console.log(all)
+
+all.splice(3, 2) // splice(start, deleteCount)
+console.log(all)
+
+all.reverse()
+console.log(all)
+
+all.sort()
+console.log(all)
+
+const mySortingAlgorithm = (namesList) => {
+    newArray = namesList.map((name) => name.charAt(0).toUpperCase() + name.slice(1)).sort()
+
+    return newArray
+}
+
+console.log("Sorted with my own function: ", mySortingAlgorithm(all))
+
+const myNewArray = all.map((names) => names.toUpperCase())
+console.log(myNewArray)
+
+
+const myArrayWithNamesStartingWithlorL = (arr) => {
+    const newArr = arr.filter((names) => names.charAt(0) === "L" || names.charAt(0) === "l")
+    return newArr
+}
+
+console.log(myArrayWithNamesStartingWithlorL(myNewArray))
+
 
 
 // EXERCISE 5
@@ -53,4 +101,3 @@ console.log(cba.split(" "))
 
 
 // EXERCISE 7
-

@@ -66,7 +66,6 @@ What you learn today:
 ### Exercises
 
 
-
 ```JS
 var boys = ["Peter", "lars", "Ole"];
 var girls = ["Janne", "hanne", "Sanne"];
