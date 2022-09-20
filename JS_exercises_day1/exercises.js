@@ -188,4 +188,5 @@ var cars = [
 ];
 
 
-
+var carsAfter1999 = cars.filter(car => car.year >= 1999)
+console.log(carsAfter1999)
