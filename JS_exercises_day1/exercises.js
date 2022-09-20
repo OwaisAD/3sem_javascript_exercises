@@ -47,7 +47,9 @@ var boys = ["Peter", "lars", "Ole"]
 var girls = ["Janne", "hanne", "Sanne"]
 
 const all = boys.concat(girls)
-console.log(all)
+const all2 = [...boys, ...girls]
+console.log("All 1: ", all)
+console.log("All 2: ", all2)
 
 const allInAString = all.join(", ")
 console.log(allInAString)
