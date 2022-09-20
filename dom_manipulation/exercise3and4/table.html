@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="script.js" defer></script>
     <title>Using map and filter to create dynamic table-rows</title>
 </head>
 <body>
     
+    <form action="">
+        <label for="nameInput">Name:</label>
+        <input id="nameInput" type="text">
+        <button type="submit" onclick="addName(event)">Add name</button> <button type="submit" onclick="removeFirst(event)">Remove first</button> <button type="submit" onclick="removeLast(event)">Remove last</button>
+    </form>
+
+    <div id="list">
+
+    </div>
+
 </body>
 </html>
