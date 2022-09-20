@@ -14,6 +14,9 @@ createUlList(names)
 const addName = (event) => {
     event.preventDefault()
     var name = document.getElementById("nameInput").value;
+    if(name.length === 0) {
+        return
+    }
     names.push(name)
     createUlList()
 }
