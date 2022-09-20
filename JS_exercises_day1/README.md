@@ -168,9 +168,13 @@ const addExpr = function (a, b) {
 const addArrow = (a, b) => a + b;
 
 // 4-anonymous function
+// createMultiplier returnerer en anden funktion
+// som derefter skal have endnu en paramter, derfor skal parses 2 til eksempel
+createMultiplier(4)(4)
 const createMultiplier = function (a) {
   return (b) => a * b; // <= anonymous function
 };
+
 
 const double = createMultiplier(2);
 const triple = createMultiplier(3);

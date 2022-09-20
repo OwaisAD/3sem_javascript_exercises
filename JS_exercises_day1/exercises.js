@@ -136,6 +136,22 @@ function add(n1, n2) {
 
 
 // EXERCISE 6
+var msgPrinter = function(msg,delay){
+  setTimeout(function(){
+      console.log(msg);
+  },delay);
+  };
+
+  console.log("aaaaaaaaaa");
+  msgPrinter ("bbbbbbbbbb",2000);
+  console.log("dddddddddd");
+  msgPrinter ("eeeeeeeeee",1000);
+  console.log("ffffffffff");
+
+
+  // A1: I expect the 1st then the 3rd then the last, then the 4th then the 5th
+  // A2: as expected.
 
 
 // EXERCISE 7
+
