@@ -187,6 +187,34 @@ var cars = [
   { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
 ];
 
-
+// 6.1
 var carsAfter1999 = cars.filter(car => car.year >= 1999)
 console.log(carsAfter1999)
+
+// 6.2
+var volvos = cars.filter(car => car.make === "Volvo")
+console.log(volvos)
+
+// 6.3
+console.log("cars under 5000")
+var priceUnder5000 = cars.filter(car => car.price < 5000)
+console.log(priceUnder5000)
+
+// 7
+/*var myCarsAsString = cars.map(car => `${car.id}, "${car.make}", "${car.model}", ${car.price}`)
+console.log(myCarsAsString)
+
+var sqlSentences = myCarsAsString.map(sql => `INSERT INTO cars (id, year, make, model, price) VALUES (${sql})`)
+console.log(sqlSentences)*/
+
+//super nice solution
+const sqlCars = (arr) => {
+  var keys = arr.map((element) => Object.keys(element)) // map all keys to a list
+  var values = arr.map((element) => Object.values(element)) // map all values to a list
+  //console.log(keys)
+  //console.log(values)
+  return arr.map((element, index) => `INSERT INTO cars (${keys[index].join(", ")}) VALUES (${values[index].join(", ")})`)
+  // return an list of sql sentences
+}
+
+console.log(sqlCars(cars))
