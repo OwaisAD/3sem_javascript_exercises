@@ -59,7 +59,7 @@ const evaluateGuess = () => {
 
 // Declare variables
 let randomNumber = getRandomNumber(n)
-console.log(randomNumber)
+console.log("Generated number:", randomNumber)
 
 // Define events
 guessButton.addEventListener("click", evaluateGuess)
@@ -76,7 +76,7 @@ restartButton.addEventListener("click", () => {
         score.innerText = 0
         lost = false
     }
-    
+
     randomNumber = getRandomNumber(n)
-    console.log("Restarted new number: ", randomNumber)
+    console.log("Restarted. New number: ", randomNumber)
 })
