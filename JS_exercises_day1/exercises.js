@@ -155,3 +155,37 @@ var msgPrinter = function(msg,delay){
 
 // EXERCISE 7
 
+var names = ["Lars", "Carla", "Jan", "Michelle", "Peter", "Bo", "Frederick"]
+
+// .map(), .filter(), .reduce(), .forEach()
+// .map() and .filter() return a new array
+
+//2
+var filterNames = names.filter((name) => name.length <= 3);
+console.log(filterNames)
+
+//3
+filterNames.forEach(name => console.log(name))
+
+//4
+var upperNames = names.map(name => name.toUpperCase())
+console.log(upperNames)
+
+//5
+var liNames = names.map(name => `<li>${name}</li>`)
+//console.log(liNames)
+var myUlList = `<ul>${"\n"}${liNames.join("\n    ")}${"\n"}</ul>`
+console.log(myUlList)
+
+
+//6
+var cars = [
+  { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
+  { id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900 },
+  { id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000 },
+  { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
+  { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
+];
+
+
+
