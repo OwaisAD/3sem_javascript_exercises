@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Using map and filter to create dynamic table-rows</title>
 </head>
 <body>
     
-    <form action="">
+    <div class="forspacing">
+    <form action="#">
         <label for="nameInput">Name:</label>
         <input id="nameInput" type="text">
         <button type="submit" onclick="addName(event)">Add name</button> <button type="submit" onclick="removeFirst(event)">Remove first</button> <button type="submit" onclick="removeLast(event)">Remove last</button>
@@ -21,8 +20,20 @@
     <!--List used to add and remove names-->
     <div id="list">
     </div>
+</div>
+
 
     <hr>
+    <!--exercise 5-->
+    <div id="table">
+    </div>
+    <form action="#" onsubmit="myFilterFunction(event)">
+        <label for="priceInput">Price:</label>
+        <input id="priceInput" type="text">
+        <button id="priceButton" type="submit">Price less than</button>
+    </form>
+    <p id="filterStatus">Empty list</p>
+    
 
 
 </body>
