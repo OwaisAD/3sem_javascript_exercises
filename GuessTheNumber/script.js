@@ -41,6 +41,7 @@ guessButton.addEventListener("click", evaluateGuess)
 
 restartButton.addEventListener("click", () => {
     displayResult.innerText = "?"
+    message.innerText = "LETS GO AGAIN, GUESS!!"
     randomNumber = getRandomNumber(n)
-    console.log("Restarted: ", randomNumber)
+    console.log("Restarted new number: ", randomNumber)
 })
