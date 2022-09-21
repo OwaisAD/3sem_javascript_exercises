@@ -1,5 +1,7 @@
 ## Europe map exercise
 
+Click on the different countries on the Europe map and get some information about the country
+
 Start with cloning the project
 
 ```TEXT
