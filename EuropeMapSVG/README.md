@@ -1,6 +1,6 @@
 ## Europe map exercise
 
-### Check the result [here](owais.dk/3sem/europemap) 
+### Check the result [here](https://owais.dk/3sem/europemap) 
 
 Start with cloning the project
 
@@ -22,7 +22,7 @@ You find the SVG code in the **index.html** file.
 </br>
 
 <figure>
-    <img src ="./images/europe.png"
+    <img src ="https://raw.githubusercontent.com/CPH-Business-Academy/3sem_javascript_exercises/europemap/images/europe.png"
          alt ="cras table"
          width ="250"
          height ="250">
