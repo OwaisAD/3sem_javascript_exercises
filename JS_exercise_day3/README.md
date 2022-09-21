@@ -12,7 +12,7 @@ https://jsonplaceholder.typicode.com/users/1
 3. Implement a page, as sketched in this figure, which should fetch the requested user, and render his data.
 
 <figure>
-<img src="./images/formone.png"
+<img src="https://github.com/CPH-Business-Academy/3sem_javascript_exercises/blob/uimanipulation_fetch/images/formone.png"
 alt="form"
 width="200"
 height="200">
@@ -27,7 +27,7 @@ https://jsonplaceholder.typicode.com/users
 5. Use this URL and add a new button to the page as sketched in this figure. When pressed, it should fetch all persons and render name and phone in a table.
 
 <figure>
-<img src="./images/formall.png"
+<img src="https://github.com/CPH-Business-Academy/3sem_javascript_exercises/blob/uimanipulation_fetch/images/formall.png"
 alt="form"
 width="200"
 height="200">
