@@ -73,6 +73,7 @@ document.getElementById("cnQuoteBtn").addEventListener("click", () => {
 
 /* JS For Exercise-3 below */
 
+// get all users function
 const getAllUsers = () => {
   fetch(`http://localhost:3333/api/users`)
     .then(res => res.json())
@@ -89,8 +90,89 @@ const getAllUsers = () => {
       document.getElementById("tableBody").innerHTML = arr
     })
 }
-
 getAllUsers()
+
+
+// show a single user, given an id
+const inputUserId = document.getElementById("findUser")
+const searchUserBtn = document.getElementById("searchUserBtn")
+let user = ``
+
+searchUserBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  const id = inputUserId.value
+  fetch(`http://localhost:3333/api/users/${id}`)
+    .then((response) => response.json())
+    .then((data) => {
+      user = `Name: ${data.name}<br>
+      Age: ${data.age}<br>
+      Gender: ${data.gender}<br>
+      Email: ${data.email}`
+      })
+  document.getElementById("foundUser").innerHTML = user
+})
+
+
+// add a new user
+const addUserBtn = document.getElementById("addUserBtn")
+const addedUserStatus = document.getElementById("addedUserStatus")
+addUserBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  let inputAge = document.getElementById("ageInput").value
+  let inputName = document.getElementById("nameInput").value
+  let inputGender = document.getElementById("genders").value
+  let inputEmail = document.getElementById("emailInput").value
+
+  console.log(`age: ${inputAge} name: ${inputName} gender: ${inputGender} email: ${inputEmail}`)
+
+
+  const rawResponse = fetch('http://localhost:3333/api/users', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"age": inputAge, "name":inputName, "gender":inputGender, "email":inputEmail})
+  });
+  //const content = rawResponse.json();
+  //console.log(content);
+  //console.log(JSON.stringify(rawResponse)) // this doesn't work
+  addedUserStatus.innerText = "Successfully added person"
+})
+
+
+// edit an existing user
+const editUserBtn = document.getElementById("editUserBtn")
+const editedUserStatus = document.getElementById("editedUserStatus")
+editUserBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  let editUserId = document.getElementById("editUserId").value
+  let editInputAge = document.getElementById("editAgeInput").value
+  let editInputName = document.getElementById("editNameInput").value
+  let editInputGender = document.getElementById("editGenders").value
+  let editInputEmail = document.getElementById("editEmailInput").value
+
+  console.log(`age: ${editInputAge} name: ${editInputName} gender: ${editInputGender} email: ${editInputEmail}`)
+
+
+  const rawResponse = fetch(`http://localhost:3333/api/users/${editUserId}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"age": editInputAge, "name":editInputName, "gender":editInputGender, "email":editInputEmail})
+  });
+  //const content = rawResponse.json();
+  //console.log(content);
+  //console.log(JSON.stringify(rawResponse)) // this doesn't work
+  editedUserStatus.innerText = "Successfully edited person"
+})
+
+
+// delete an existing user
+
+
 
 /*
  If you do not understand the code below, don´t worry, it is not necessary for completing the exercises
