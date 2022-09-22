@@ -15,37 +15,61 @@ const makeListItems = () => {
 makeListItems()
 
 
-  const inputJokeId = document.getElementById("inputJokeId")
-  const jokeBtn = document.getElementById("getJoke")
-  const foundJoke = document.getElementById("joke")
+const inputJokeId = document.getElementById("inputJokeId")
+const jokeBtn = document.getElementById("getJoke")
+const foundJoke = document.getElementById("joke")
 
 
-  jokeBtn.addEventListener("click", (event) => {
-      event.preventDefault()
-      const joke = `<li>${jokeFacade.getJokeById(inputJokeId.value-1)}</li>`
-      foundJoke.innerHTML = joke      
-  })
+jokeBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  const joke = `<li>${jokeFacade.getJokeById(inputJokeId.value-1)}</li>`
+  foundJoke.innerHTML = joke
+})
 
 
-  const inputJokeText = document.getElementById("inputJokeText")
-  const addJokeBtn = document.getElementById("addJoke")
-  const status = document.getElementById("message")
+const inputJokeText = document.getElementById("inputJokeText")
+const addJokeBtn = document.getElementById("addJoke")
+const status = document.getElementById("message")
 
-  addJokeBtn.addEventListener("click", (event) => {
-      event.preventDefault()
-      if(inputJokeText.value === "") {
-        status.innerHTML = "Please add a joke"
-        return
-      }
-      jokeFacade.addJoke(inputJokeText.value)
-      //console.log(jokeFacade.getJokes())
-      makeListItems()
-      status.innerHTML = "Succesfully added a new joke"
-  })
+addJokeBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  if (inputJokeText.value === "") {
+    status.innerHTML = "Please add a joke"
+    return
+  }
+  jokeFacade.addJoke(inputJokeText.value)
+  //console.log(jokeFacade.getJokes())
+  makeListItems()
+  status.innerHTML = "Succesfully added a new joke"
+})
+
 
 
 
 /* JS For Exercise-2 below */
+const getOneChuckNorrisQuote = () => {
+  fetch(`https://api.chucknorris.io/jokes/random`)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("cnQuote").innerText = `${data.value}`
+    })
+    getChuckNorrisQuoteEveryMinute()
+}
+
+const getChuckNorrisQuoteEveryMinute = () => {
+  setInterval(() => {
+    fetch(`https://api.chucknorris.io/jokes/random`)
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("cnQuote").innerText = `${data.value}`
+  })}, 30000)
+}
+
+document.getElementById("cnQuoteBtn").addEventListener("click", () => {
+  getOneChuckNorrisQuote()
+  document.getElementById("cnQuoteBtn").disabled = true
+})
+
 
 /* JS For Exercise-3 below */
 
