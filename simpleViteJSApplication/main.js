@@ -73,6 +73,25 @@ document.getElementById("cnQuoteBtn").addEventListener("click", () => {
 
 /* JS For Exercise-3 below */
 
+const getAllUsers = () => {
+  fetch(`http://localhost:3333/api/users`)
+    .then(res => res.json())
+    .then(data => {
+      const arr = data.map(row => 
+        `<tr>
+        <th>${row.id}</th>
+        <th>${row.age}</th>
+        <th>${row.name}</th>
+        <th></th>
+        <th>${row.gender}</th>
+        <th>${row.email}</th>
+      </tr>`).join("")
+      document.getElementById("tableBody").innerHTML = arr
+    })
+}
+
+getAllUsers()
+
 /*
  If you do not understand the code below, don´t worry, it is not necessary for completing the exercises
 */
