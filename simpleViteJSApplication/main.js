@@ -7,6 +7,25 @@ document.getElementById("all-content").style.display = "block";
 */
 
 /* JS For Exercise-1 below */
+const makeListItems = () => {
+  const jokes = jokeFacade.getJokes()
+  const jokeList = document.getElementById("jokes")
+  jokeList.innerHTML = jokes.map((joke) => `<li>${joke}</li>`).join("")
+}
+makeListItems()
+
+
+  const inputJokeId = document.getElementById("inputJokeId")
+  const jokeBtn = document.getElementById("getJoke")
+  const foundJoke = document.getElementById("joke")
+
+
+  jokeBtn.addEventListener("click", (event) => {
+      event.preventDefault()
+      const joke = `<li>${jokeFacade.getJokeById(inputJokeId.value-1)}</li>`
+      foundJoke.innerHTML = joke      
+  })
+
 
 
 
@@ -31,10 +50,6 @@ function menuItemClicked(evt) {
   switch (id) {
     case "ex1":
       hideAllShowOne("ex1_html");
-      const jokes = jokeFacade.getJokes()
-      const jokeList = document.getElementById("jokes")
-      jokeList.innerHTML = jokes.map((joke) => `<li>${joke}</li>`).join("")
-      
       break;
     case "ex2":
       hideAllShowOne("ex2_html");

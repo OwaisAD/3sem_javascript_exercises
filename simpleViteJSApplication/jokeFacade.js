@@ -24,7 +24,7 @@ function getJokes() {
 
 /* Make sure you understand what we create here, it involves VITAL JavaScript knowledge */
 const jokeFacade = {
-  addJoke,
+  addJoke, // basically det samme som addJoke:addJoke da navnet på property og metode er det samme
   getJokeById,
   getJokes,
 };
