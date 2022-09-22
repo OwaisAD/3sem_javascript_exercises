@@ -27,6 +27,22 @@ makeListItems()
   })
 
 
+  const inputJokeText = document.getElementById("inputJokeText")
+  const addJokeBtn = document.getElementById("addJoke")
+  const status = document.getElementById("message")
+
+  addJokeBtn.addEventListener("click", (event) => {
+      event.preventDefault()
+      if(inputJokeText.value === "") {
+        status.innerHTML = "Please add a joke"
+        return
+      }
+      jokeFacade.addJoke(inputJokeText.value)
+      //console.log(jokeFacade.getJokes())
+      makeListItems()
+      status.innerHTML = "Succesfully added a new joke"
+  })
+
 
 
 /* JS For Exercise-2 below */
