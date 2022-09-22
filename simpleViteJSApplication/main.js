@@ -171,7 +171,26 @@ editUserBtn.addEventListener("click", (event) => {
 
 
 // delete an existing user
-
+const deleteUserBtn = document.getElementById("deleteBtn")
+const deleteStatus = document.getElementById("deleteStatus")
+deleteUserBtn.addEventListener("click", (event) => {
+  event.preventDefault()
+  let userToDeleteId = document.getElementById("deleteId").value
+  const rawResponse = fetch(`http://localhost:3333/api/users/${userToDeleteId}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  });
+  //const content = rawResponse.json();
+  //console.log(content);
+  //console.log(JSON.stringify(rawResponse)) // this doesn't work
+  deleteStatus.innerText = "Successfully deleted person"
+  setTimeout(() => {
+    deleteStatus.innerText = ""
+  }, 5000)
+})
 
 
 /*

@@ -129,8 +129,14 @@
                     </form>
                     <p id="editedUserStatus"></p>
                 </div>
-                <div class="col-md-4" style="background-color: powderblue">
+                <div class="col-md-4" style="background-color: powderblue;">
                     <h5>Delete User</h5>
+                    <form action="#">
+                        <label for="deleteId">User to delete (id): </label>
+                        <input id="deleteId" type="number" required>
+                        <button id="deleteBtn">Delete</button>
+                    </form>
+                    <p id="deleteStatus"></p>
                 </div>
             </div>
         </div>
