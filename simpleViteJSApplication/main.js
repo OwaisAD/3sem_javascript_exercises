@@ -137,7 +137,15 @@ addUserBtn.addEventListener("click", (event) => {
   //const content = rawResponse.json();
   //console.log(content);
   //console.log(JSON.stringify(rawResponse)) // this doesn't work
+  inputAge.value = ""
+  inputName.value = ""
+  inputGender.value = ""
+  inputEmail.value = ""
   addedUserStatus.innerText = "Successfully added person"
+
+  setTimeout(() => {
+    addedUserStatus.innerText = ""
+  },5000)
 })
 
 
@@ -167,6 +175,9 @@ editUserBtn.addEventListener("click", (event) => {
   //console.log(content);
   //console.log(JSON.stringify(rawResponse)) // this doesn't work
   editedUserStatus.innerText = "Successfully edited person"
+  setTimeout(() => {
+    editedUserStatus.innerText = ""
+  }, 5000)
 })
 
 
