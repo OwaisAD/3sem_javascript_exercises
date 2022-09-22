@@ -53,16 +53,17 @@ const getOneChuckNorrisQuote = () => {
     .then((data) => {
       document.getElementById("cnQuote").innerText = `${data.value}`
     })
-    getChuckNorrisQuoteEveryMinute()
+  getChuckNorrisQuoteEveryMinute()
 }
 
 const getChuckNorrisQuoteEveryMinute = () => {
   setInterval(() => {
     fetch(`https://api.chucknorris.io/jokes/random`)
-  .then((response) => response.json())
-  .then((data) => {
-    document.getElementById("cnQuote").innerText = `${data.value}`
-  })}, 30000)
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("cnQuote").innerText = `${data.value}`
+      })
+  }, 30000)
 }
 
 document.getElementById("cnQuoteBtn").addEventListener("click", () => {
@@ -78,7 +79,7 @@ const getAllUsers = () => {
   fetch(`http://localhost:3333/api/users`)
     .then(res => res.json())
     .then(data => {
-      const arr = data.map(row => 
+      const arr = data.map(row =>
         `<tr>
         <th>${row.id}</th>
         <th>${row.age}</th>
@@ -102,13 +103,16 @@ searchUserBtn.addEventListener("click", (event) => {
   event.preventDefault()
   const id = inputUserId.value
   fetch(`http://localhost:3333/api/users/${id}`)
-    .then((response) => response.json())
+    .then((response) => {
+      return response.json()
+    })
     .then((data) => {
       user = `Name: ${data.name}<br>
       Age: ${data.age}<br>
       Gender: ${data.gender}<br>
       Email: ${data.email}`
-      })
+    })
+    //.catch((error) => console.log(error.msg)) //virker ikke
   document.getElementById("foundUser").innerHTML = user
 })
 
@@ -132,7 +136,12 @@ addUserBtn.addEventListener("click", (event) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({"age": inputAge, "name":inputName, "gender":inputGender, "email":inputEmail})
+    body: JSON.stringify({
+      "age": inputAge,
+      "name": inputName,
+      "gender": inputGender,
+      "email": inputEmail
+    })
   });
   //const content = rawResponse.json();
   //console.log(content);
@@ -145,7 +154,7 @@ addUserBtn.addEventListener("click", (event) => {
 
   setTimeout(() => {
     addedUserStatus.innerText = ""
-  },5000)
+  }, 5000)
 })
 
 
@@ -169,7 +178,12 @@ editUserBtn.addEventListener("click", (event) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({"age": editInputAge, "name":editInputName, "gender":editInputGender, "email":editInputEmail})
+    body: JSON.stringify({
+      "age": editInputAge,
+      "name": editInputName,
+      "gender": editInputGender,
+      "email": editInputEmail
+    })
   });
   //const content = rawResponse.json();
   //console.log(content);
