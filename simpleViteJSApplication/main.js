@@ -1,11 +1,14 @@
 import "./style.css";
 import jokeFacade from "./jokeFacade";
+import userFacade from "./userFacade";
 document.getElementById("all-content").style.display = "block";
+
 
 /*
   Add your JavaScript for all exercises Below or in separate js-files, which you must the import above
 */
 
+/*******************************************/
 /* JS For Exercise-1 below */
 const makeListItems = () => {
   const jokes = jokeFacade.getJokes()
@@ -44,8 +47,7 @@ addJokeBtn.addEventListener("click", (event) => {
 })
 
 
-
-
+/*******************************************/
 /* JS For Exercise-2 below */
 const getOneChuckNorrisQuote = () => {
   fetch(`https://api.chucknorris.io/jokes/random`)
@@ -72,14 +74,16 @@ document.getElementById("cnQuoteBtn").addEventListener("click", () => {
 })
 
 
+/*******************************************/
 /* JS For Exercise-3 below */
+
+const errorMessages = document.getElementById("errors")
 
 // get all users function
 const getAllUsers = () => {
-  fetch(`http://localhost:3333/api/users`)
-    .then(res => res.json())
-    .then(data => {
-      const arr = data.map(row =>
+  userFacade.getAllUsers()
+    .then(users => {
+      const arr = users.map(row =>
         `<tr>
         <th>${row.id}</th>
         <th>${row.age}</th>
@@ -90,6 +94,13 @@ const getAllUsers = () => {
       </tr>`).join("")
       document.getElementById("tableBody").innerHTML = arr
     })
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => errorMessages.innerText = e.msg)
+      } else {
+        errorMessages.innerText = "Network error"
+      }
+    })
 }
 getAllUsers()
 
@@ -97,23 +108,33 @@ getAllUsers()
 // show a single user, given an id
 const inputUserId = document.getElementById("findUser")
 const searchUserBtn = document.getElementById("searchUserBtn")
-let user = ``
+let foundUser = ``
 
 searchUserBtn.addEventListener("click", (event) => {
   event.preventDefault()
   const id = inputUserId.value
-  fetch(`http://localhost:3333/api/users/${id}`)
-    .then((response) => {
-      return response.json()
+  console.log("looking for user with id:", id)
+  userFacade.getUserById(id)
+    .then(user => {
+      foundUser = `Name: ${user.name}
+      Age: ${user.age}
+      Gender: ${user.gender}
+      Email: ${user.email}`
+
+      document.getElementById("editUserId").value = `${user.id}`
+      document.getElementById("editAgeInput").value = `${user.age}`
+      document.getElementById("editNameInput").value = `${user.name}`
+      document.getElementById("editGenders").value = `${user.gender}`
+      document.getElementById("editEmailInput").value = `${user.email}`
+      document.getElementById("userFound").innerText = foundUser
     })
-    .then((data) => {
-      user = `Name: ${data.name}<br>
-      Age: ${data.age}<br>
-      Gender: ${data.gender}<br>
-      Email: ${data.email}`
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => errorMessages.innerText = e.msg)
+      } else {
+        errorMessages.innerText = "Network error"
+      }
     })
-    //.catch((error) => console.log(error.msg)) //virker ikke
-  document.getElementById("foundUser").innerHTML = user
 })
 
 
