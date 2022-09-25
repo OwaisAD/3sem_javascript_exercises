@@ -148,30 +148,46 @@ addUserBtn.addEventListener("click", (event) => {
   let inputGender = document.getElementById("genders").value
   let inputEmail = document.getElementById("emailInput").value
 
-  console.log(`age: ${inputAge} name: ${inputName} gender: ${inputGender} email: ${inputEmail}`)
+  //console.log(`age: ${inputAge} name: ${inputName} gender: ${inputGender} email: ${inputEmail}`)
+  // instead of simply console logging as above, we can make a user object and then print the object
+  const user = {
+    "age": inputAge,
+    "name": inputName,
+    "gender": inputGender,
+    "email": inputEmail
+  }
+  console.log("New user", user)
 
-
-  const rawResponse = fetch('http://localhost:3333/api/users', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "age": inputAge,
-      "name": inputName,
-      "gender": inputGender,
-      "email": inputEmail
+  userFacade.addUser(user)
+    .then(user => {
+      addedUserStatus.innerText = "Added user: " + JSON.stringify(user)
+      getAllUsers()
     })
-  });
-  //const content = rawResponse.json();
-  //console.log(content);
-  //console.log(JSON.stringify(rawResponse)) // this doesn't work
-  inputAge.value = ""
-  inputName.value = ""
-  inputGender.value = ""
-  inputEmail.value = ""
-  addedUserStatus.innerText = "Successfully added person"
+    .catch(err => {
+      if (err.status) {
+        err.fullError.then(e => errorMessages.innerText = e.msg)
+      } else {
+        errorMessages.innerText = "Network error"
+      }
+    })
+  // const rawResponse = fetch('http://localhost:3333/api/users', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     "age": inputAge,
+  //     "name": inputName,
+  //     "gender": inputGender,
+  //     "email": inputEmail
+  //   })
+  // });
+
+  document.getElementById("ageInput").value = ""
+  document.getElementById("nameInput").value = ""
+  document.getElementById("genders").value = ""
+  document.getElementById("emailInput").value = ""
 
   setTimeout(() => {
     addedUserStatus.innerText = ""
@@ -190,26 +206,21 @@ editUserBtn.addEventListener("click", (event) => {
   let editInputGender = document.getElementById("editGenders").value
   let editInputEmail = document.getElementById("editEmailInput").value
 
-  console.log(`age: ${editInputAge} name: ${editInputName} gender: ${editInputGender} email: ${editInputEmail}`)
+  const user = {"age":editInputAge, "name":editInputName, "gender":editInputGender, "email":editInputEmail}
 
-
-  const rawResponse = fetch(`http://localhost:3333/api/users/${editUserId}`, {
-    method: 'PUT',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      "age": editInputAge,
-      "name": editInputName,
-      "gender": editInputGender,
-      "email": editInputEmail
+  userFacade.updateUser(editUserId, user)
+    .then(user => {
+      editedUserStatus.innerText = "Updated user: " + JSON.stringify(user)
+      getAllUsers()
     })
-  });
-  //const content = rawResponse.json();
-  //console.log(content);
-  //console.log(JSON.stringify(rawResponse)) // this doesn't work
-  editedUserStatus.innerText = "Successfully edited person"
+    .catch(err => {
+      if(err.status) {
+        err.fullError.then(e => errorMessages.innerText = e.msg)
+      } else {
+        errorMessages.innerText = "Network error"
+      }
+    })
+
   setTimeout(() => {
     editedUserStatus.innerText = ""
   }, 5000)
@@ -222,17 +233,20 @@ const deleteStatus = document.getElementById("deleteStatus")
 deleteUserBtn.addEventListener("click", (event) => {
   event.preventDefault()
   let userToDeleteId = document.getElementById("deleteId").value
-  const rawResponse = fetch(`http://localhost:3333/api/users/${userToDeleteId}`, {
-    method: 'DELETE',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-  });
-  //const content = rawResponse.json();
-  //console.log(content);
-  //console.log(JSON.stringify(rawResponse)) // this doesn't work
-  deleteStatus.innerText = "Successfully deleted person"
+
+  userFacade.deleteUser(userToDeleteId)
+    .then(user => {
+      deleteStatus.innerText = "Succesfully deleted user with id " + userToDeleteId
+      getAllUsers()
+    })
+    .catch(err => {
+      if(err.status) {
+        err.fullError.then(e => errorMessages.innerText = e.msg)
+      } else {
+        errorMessages.innerText = "Network error"
+      }
+    })
+    
   setTimeout(() => {
     deleteStatus.innerText = ""
   }, 5000)

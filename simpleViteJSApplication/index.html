@@ -94,6 +94,7 @@
 
                         <label for="genders" style="margin-right:4px">Gender:  </label>
                         <select name="genders" id="genders" required>
+                            <option value="" disabled selected>Select gender</option>
                             <option value="male">male</option>
                             <option value="female">female</option>
                         </select> <br> <br>
@@ -134,7 +135,7 @@
                     <h5>Delete User</h5>
                     <form action="#">
                         <label for="deleteId">User to delete (id): </label>
-                        <input id="deleteId" type="number" required>
+                        <input id="deleteId" type="number" required> <br> <br>
                         <button id="deleteBtn">Delete</button>
                     </form>
                     <p id="deleteStatus"></p>
