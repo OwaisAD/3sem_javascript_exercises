@@ -76,8 +76,11 @@ document.getElementById("cnQuoteBtn").addEventListener("click", () => {
 
 /*******************************************/
 /* JS For Exercise-3 below */
-
-const errorMessages = document.getElementById("errors")
+const errorMessageFindAll = document.getElementById("errorMsgFindAllUsers")
+const errorMessageFindUser = document.getElementById("errorMsgFindUser")
+const errorMessageAddUser = document.getElementById("errorMsgAddUser")
+const errorMessageEditUser = document.getElementById("errorMsgEditUser")
+const errorMessageDeleteUser = document.getElementById("errorMsgDeleteUser")
 
 // get all users function
 const getAllUsers = () => {
@@ -96,9 +99,9 @@ const getAllUsers = () => {
     })
     .catch(err => {
       if (err.status) {
-        err.fullError.then(e => errorMessages.innerText = e.msg)
+        err.fullError.then(e => errorMessageFindAll.innerText = e.msg)
       } else {
-        errorMessages.innerText = "Network error"
+        errorMessageFindAll.innerText = "Network error"
       }
     })
 }
@@ -112,6 +115,8 @@ let foundUser = ``
 
 searchUserBtn.addEventListener("click", (event) => {
   event.preventDefault()
+  errorMessageFindUser.innerText = ""
+  document.getElementById("userFound").innerText = ""
   const id = inputUserId.value
   console.log("looking for user with id:", id)
   userFacade.getUserById(id)
@@ -130,9 +135,9 @@ searchUserBtn.addEventListener("click", (event) => {
     })
     .catch(err => {
       if (err.status) {
-        err.fullError.then(e => errorMessages.innerText = e.msg)
+        err.fullError.then(e => errorMessageFindUser.innerText = e.msg)
       } else {
-        errorMessages.innerText = "Network error"
+        errorMessageFindUser.innerText = "Network error"
       }
     })
 })
@@ -165,9 +170,9 @@ addUserBtn.addEventListener("click", (event) => {
     })
     .catch(err => {
       if (err.status) {
-        err.fullError.then(e => errorMessages.innerText = e.msg)
+        err.fullError.then(e => errorMessageAddUser.innerText = e.msg)
       } else {
-        errorMessages.innerText = "Network error"
+        errorMessageAddUser.innerText = "Network error"
       }
     })
   // const rawResponse = fetch('http://localhost:3333/api/users', {
@@ -215,9 +220,9 @@ editUserBtn.addEventListener("click", (event) => {
     })
     .catch(err => {
       if(err.status) {
-        err.fullError.then(e => errorMessages.innerText = e.msg)
+        err.fullError.then(e => errorMessageEditUser.innerText = e.msg)
       } else {
-        errorMessages.innerText = "Network error"
+        errorMessageEditUser.innerText = "Network error"
       }
     })
 
@@ -241,12 +246,12 @@ deleteUserBtn.addEventListener("click", (event) => {
     })
     .catch(err => {
       if(err.status) {
-        err.fullError.then(e => errorMessages.innerText = e.msg)
+        err.fullError.then(e => errorMessageDeleteUser.innerText = e.msg)
       } else {
-        errorMessages.innerText = "Network error"
+        errorMessageDeleteUser.innerText = "Network error"
       }
     })
-    
+
   setTimeout(() => {
     deleteStatus.innerText = ""
   }, 5000)
